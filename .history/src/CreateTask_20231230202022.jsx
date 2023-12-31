@@ -7,15 +7,10 @@ const CreateTask = ({ input, addTask, handleChange }) => {
     setPlaceholder(true);
   };
 
-  const handleBlur = () => {
-    setPlaceholder(false)
-  }
-
   return (
     <div className="create-task">
       <input
         maxLength="20"
-        onBlur={handleBlur}
         onFocus={handleFocus}
         onKeyDown={(e) => e.key === "Enter" && addTask()}
         placeholder={placeholder ? "Max Characters: 20" : "Add a todo task..."}

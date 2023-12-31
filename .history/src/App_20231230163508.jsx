@@ -6,9 +6,9 @@ import AffectAll from "./AffectAll";
 
 function App() {
   const [list, setList] = useState([
-    { id: uuid(), text: "Read Chapter 3 & 4 ✏️", completed: false },
-    { id: uuid(), text: "Walk the dog 🐶", completed: false },
-    { id: uuid(), text: "Clean the bathroom 🤮", completed: false },
+    { id: uuid(), text: 'Read Chapter 3 & 4 ✏️', completed: false},
+    { id: uuid(), text: 'Walk the dog 🐶', completed: false},
+    { id: uuid(), text: 'Clean the bathroom 🤮', completed: false},
   ]);
   const [input, setInput] = useState("");
 
@@ -42,21 +42,22 @@ function App() {
   };
 
   const clearAll = () => {
-    setList([]);
-  };
+    setList([])
+  }
 
   const completeAll = () => {
-    const isItCompleted = list.some((task) => !task.completed);
-    const newList = list.map((task) => ({ ...task, completed: isItCompleted }));
+    const newList = list.map((task) => {
+      return {...task, completed: true}
+    })
     setList(newList)
-  };
+  }
 
   return (
     <>
       <h1>Todo List</h1>
-      <p id="developer">Created by Shayan Abedi</p>
+      <p>Created by Shayan Abedi</p>
       <CreateTask handleChange={handleChange} input={input} addTask={addTask} />
-      <AffectAll clearAll={clearAll} completeAll={completeAll} />
+      <AffectAll clearAll={clearAll} />
       <TodoList
         list={list}
         handleDelete={handleDelete}

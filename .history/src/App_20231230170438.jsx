@@ -54,7 +54,7 @@ function App() {
   return (
     <>
       <h1>Todo List</h1>
-      <p id="developer">Created by Shayan Abedi</p>
+      <p>Created by Shayan Abedi</p>
       <CreateTask handleChange={handleChange} input={input} addTask={addTask} />
       <AffectAll clearAll={clearAll} completeAll={completeAll} />
       <TodoList

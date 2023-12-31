@@ -46,15 +46,20 @@ function App() {
   };
 
   const completeAll = () => {
-    const isItCompleted = list.some((task) => !task.completed);
-    const newList = list.map((task) => ({ ...task, completed: isItCompleted }));
-    setList(newList)
+    const newList = list.map((task) => {
+      if (!task.completed) {
+        return { ...task, completed: true };
+      } else if (task.completed) {
+        return { ...task, completed: false };
+      }
+    });
+    setList(newList);
   };
 
   return (
     <>
       <h1>Todo List</h1>
-      <p id="developer">Created by Shayan Abedi</p>
+      <p>Created by Shayan Abedi</p>
       <CreateTask handleChange={handleChange} input={input} addTask={addTask} />
       <AffectAll clearAll={clearAll} completeAll={completeAll} />
       <TodoList
